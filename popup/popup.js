@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const assetMap = {
     donkey: '../assets/donkey_ears.svg',
     bunny: '../assets/bunny_ears.svg',
-    shrek: '../assets/shrek_ears.svg',
+    ogre: '../assets/ogre_ears.svg',
     horns: '../assets/devil_horns.svg',
     dog: '../assets/dog_ears.svg'
   };

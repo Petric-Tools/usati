@@ -4,7 +4,7 @@
 
   let config = {
     enabled: true,
-    earType: 'donkey', // donkey, bunny, shrek, horns, dog
+    earType: 'donkey', // donkey, bunny, ogre, horns, dog
     earScale: 1.35,
     earTwitch: true,
     triggerMode: 'always', // always, vucic_only
@@ -43,7 +43,7 @@
     const assetMap = {
       donkey: 'assets/donkey_ears.svg',
       bunny: 'assets/bunny_ears.svg',
-      shrek: 'assets/shrek_ears.svg',
+      ogre: 'assets/ogre_ears.svg',
       horns: 'assets/devil_horns.svg',
       dog: 'assets/dog_ears.svg'
     };
