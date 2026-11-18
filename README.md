@@ -2,7 +2,7 @@
   <img src="assets/icon128.png" width="96" height="96" alt="Ušati logo">
 </p>
 
-<h1 align="center">Ušati / Ушати (Nelečeni Ears Edition) 🫏🐰👹</h1>
+<h1 align="center">Ušati / Ушати (Nelečeni Ears Edition) 🐴🐰👹</h1>
 
 <p align="center">
   <b>Забавно и сатирично проширење за прегледаче које у реалном времену монтира уши на YouTube преносима и вестима!</b><br>
@@ -45,7 +45,7 @@
 - Подржава бесконачно скроловање (*Infinite Scroll*) – нове вести аутоматски добијају уши чим се учитају на екран.
 
 ### 🎨 Модели ушију на избор
-- 🫏 **Магареће уши** – дугачке сиве уши са розе унутрашњошћу
+- 🐴 **Магареће уши** – дугачке сиве уши са розе унутрашњошћу
 - 🐰 **Зечије уши** – беле уши са једним повијеним врхом
 - 👹 **Огар уши** – зелене огарске трубице
 - 😈 **Ђавољи рогови** – црвени зашиљени рогови са сјајем
@@ -78,7 +78,7 @@
 - Pronalazi lica na slikama i montira smiješne uši direktno u članku.
 
 ### 🎨 Izbor modela
-- 🫏 Magareće uši
+- 🐴 Magareće uši
 - 🐰 Zečije uši
 - 👹 Ogar uši
 - 😈 Đavolji rogovi
