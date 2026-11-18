@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <!-- Donkey Ears (Magareće uši) -->
+  <defs>
+    <radialGradient id="pinkGradL" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffb3ba"/>
+      <stop offset="100%" stop-color="#e88899"/>
+    </radialGradient>
+    <radialGradient id="pinkGradR" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffb3ba"/>
+      <stop offset="100%" stop-color="#e88899"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Left Ear -->
+  <g transform="rotate(-18 100 220)" filter="url(#shadow)">
+    <!-- Outer ear (Grey fur) -->
+    <path d="M 85 225 C 40 180 15 100 25 30 C 45 10 75 25 95 65 C 115 110 120 180 115 225 Z" 
+          fill="#7d7b7a" stroke="#333333" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Inner ear (Pink fluff) -->
+    <path d="M 85 210 C 55 170 35 100 45 45 C 58 35 75 50 85 80 C 100 120 102 170 98 210 Z" 
+          fill="url(#pinkGradL)" opacity="0.9"/>
+    <!-- Tuft details -->
+    <path d="M 25 30 Q 35 15 45 22 M 20 50 Q 10 40 23 35" stroke="#4a4847" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right Ear -->
+  <g transform="rotate(18 300 220)" filter="url(#shadow)">
+    <!-- Outer ear (Grey fur) -->
+    <path d="M 315 225 C 360 180 385 100 375 30 C 355 10 325 25 305 65 C 285 110 280 180 285 225 Z" 
+          fill="#7d7b7a" stroke="#333333" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Inner ear (Pink fluff) -->
+    <path d="M 315 210 C 345 170 365 100 355 45 C 342 35 325 50 315 80 C 300 120 298 170 302 210 Z" 
+          fill="url(#pinkGradR)" opacity="0.9"/>
+    <!-- Tuft details -->
+    <path d="M 375 30 Q 365 15 355 22 M 380 50 Q 390 40 377 35" stroke="#4a4847" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

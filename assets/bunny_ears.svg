@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <!-- Bunny Ears (Zečije uši) -->
+  <defs>
+    <radialGradient id="bunnyPink" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff99bb"/>
+      <stop offset="100%" stop-color="#ee6699"/>
+    </radialGradient>
+    <filter id="bunnyShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Left Ear (Straight up) -->
+  <g transform="rotate(-8 120 220)" filter="url(#bunnyShadow)">
+    <path d="M 100 225 C 70 160 50 80 80 15 C 105 -5 135 10 140 70 C 145 130 135 180 130 225 Z" 
+          fill="#ffffff" stroke="#2b2b2b" stroke-width="4"/>
+    <path d="M 102 210 C 82 155 68 85 90 35 C 105 20 122 30 126 75 C 130 125 122 170 118 210 Z" 
+          fill="url(#bunnyPink)"/>
+  </g>
+
+  <!-- Right Ear (Slightly folded / bent tip) -->
+  <g transform="rotate(12 280 220)" filter="url(#bunnyShadow)">
+    <!-- Base to bend -->
+    <path d="M 270 225 C 265 170 270 120 280 75 C 295 55 315 55 320 85 C 325 130 320 180 300 225 Z" 
+          fill="#ffffff" stroke="#2b2b2b" stroke-width="4"/>
+    <path d="M 278 210 C 275 165 278 125 286 90 C 297 75 308 75 312 95 C 316 130 310 170 295 210 Z" 
+          fill="url(#bunnyPink)"/>
+    <!-- Folded tip drooping down -->
+    <path d="M 280 75 C 275 40 310 10 335 30 C 350 45 340 75 320 85 Z" 
+          fill="#f7f7f7" stroke="#2b2b2b" stroke-width="4"/>
+  </g>
+</svg>

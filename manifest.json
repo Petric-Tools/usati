@@ -1,0 +1,70 @@
+{
+  "manifest_version": 3,
+  "name": "Ušati (Nelečeni Ears Edition)",
+  "short_name": "Ušati",
+  "version": "1.0.0",
+  "description": "Dodaje magareće, zečije ili Šrek uši na video prenose i novinske portale u realnom vremenu.",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Ušati - Podesi uši",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
+      "js": [
+        "lib/pico.js",
+        "lib/pico_model.js",
+        "content/youtube.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://*.nova.rs/*",
+        "https://*.n1info.rs/*",
+        "https://*.n1info.ba/*",
+        "https://*.blic.rs/*",
+        "https://*.kurir.rs/*",
+        "https://*.informer.rs/*",
+        "https://*.danas.rs/*",
+        "https://*.politika.rs/*",
+        "https://*.telegraf.rs/*",
+        "https://*.mondo.rs/*",
+        "https://*.alo.rs/*",
+        "https://*.b92.net/*",
+        "https://*.rts.rs/*",
+        "https://*.vreme.com/*",
+        "https://*.nin.rs/*"
+      ],
+      "js": [
+        "lib/pico.js",
+        "lib/pico_model.js",
+        "content/news.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*.svg",
+        "assets/*.png",
+        "lib/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

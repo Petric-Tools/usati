@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  
+  <!-- Donkey ears on icon -->
+  <!-- Left Ear -->
+  <path d="M 40 70 C 20 45 10 15 22 5 C 32 1 45 15 50 35 C 53 50 50 68 40 70 Z" 
+        fill="#7d7b7a" stroke="#222" stroke-width="2"/>
+  <path d="M 38 62 C 28 42 22 22 28 12 C 34 10 40 20 44 35 C 46 45 44 58 38 62 Z" 
+        fill="#ffb3ba"/>
+
+  <!-- Right Ear -->
+  <path d="M 88 70 C 108 45 118 15 106 5 C 96 1 83 15 78 35 C 75 50 78 68 88 70 Z" 
+        fill="#7d7b7a" stroke="#222" stroke-width="2"/>
+  <path d="M 90 62 C 100 42 106 22 100 12 C 94 10 88 20 84 35 C 82 45 84 58 90 62 Z" 
+        fill="#ffb3ba"/>
+
+  <!-- Round cartoon smiley head -->
+  <circle cx="64" cy="80" r="32" fill="#ffddaa" stroke="#222" stroke-width="3"/>
+  <!-- Eyes -->
+  <ellipse cx="52" cy="74" rx="4" ry="6" fill="#222"/>
+  <ellipse cx="76" cy="74" rx="4" ry="6" fill="#222"/>
+  <circle cx="53" cy="72" r="1.5" fill="#fff"/>
+  <circle cx="77" cy="72" r="1.5" fill="#fff"/>
+  <!-- Smug smirk mouth -->
+  <path d="M 52 90 Q 64 104 76 90" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <!-- Devil Horns (Đavolji rogovi) -->
+  <defs>
+    <linearGradient id="hornRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff3333"/>
+      <stop offset="60%" stop-color="#b30000"/>
+      <stop offset="100%" stop-color="#4d0000"/>
+    </linearGradient>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#ff0000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Left Horn -->
+  <g filter="url(#glow)">
+    <path d="M 125 210 C 95 190 70 140 65 90 C 60 40 90 20 100 20 C 105 35 110 90 155 195 Z" 
+          fill="url(#hornRed)" stroke="#260000" stroke-width="3"/>
+    <!-- Highlight shine -->
+    <path d="M 95 35 C 80 55 78 105 85 140" stroke="#ff9999" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Right Horn -->
+  <g filter="url(#glow)">
+    <path d="M 275 210 C 305 190 330 140 335 90 C 340 40 310 20 300 20 C 295 35 290 90 245 195 Z" 
+          fill="url(#hornRed)" stroke="#260000" stroke-width="3"/>
+    <!-- Highlight shine -->
+    <path d="M 305 35 C 320 55 322 105 315 140" stroke="#ff9999" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

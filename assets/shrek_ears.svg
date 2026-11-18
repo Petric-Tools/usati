@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240">
+  <!-- Shrek Trumpet Ears -->
+  <defs>
+    <radialGradient id="ogreGreen" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#b4d959"/>
+      <stop offset="70%" stop-color="#7da62c"/>
+      <stop offset="100%" stop-color="#557517"/>
+    </radialGradient>
+    <radialGradient id="ogreHole" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#415912"/>
+      <stop offset="100%" stop-color="#243308"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Left Trumpet Ear -->
+  <g transform="rotate(-35 80 180)">
+    <!-- Stem -->
+    <path d="M 100 200 C 80 160 50 120 40 80 L 70 70 C 80 110 105 150 125 190 Z" 
+          fill="url(#ogreGreen)" stroke="#2b3b0d" stroke-width="3"/>
+    <!-- Trumpet Flare / Opening -->
+    <ellipse cx="53" cy="73" rx="26" ry="14" transform="rotate(-20 53 73)" 
+             fill="url(#ogreGreen)" stroke="#2b3b0d" stroke-width="3"/>
+    <ellipse cx="53" cy="73" rx="19" ry="9" transform="rotate(-20 53 73)" 
+             fill="url(#ogreHole)"/>
+  </g>
+
+  <!-- Right Trumpet Ear -->
+  <g transform="rotate(35 320 180)">
+    <!-- Stem -->
+    <path d="M 300 200 C 320 160 350 120 360 80 L 330 70 C 320 110 295 150 275 190 Z" 
+          fill="url(#ogreGreen)" stroke="#2b3b0d" stroke-width="3"/>
+    <!-- Trumpet Flare / Opening -->
+    <ellipse cx="347" cy="73" rx="26" ry="14" transform="rotate(20 347 73)" 
+             fill="url(#ogreGreen)" stroke="#2b3b0d" stroke-width="3"/>
+    <ellipse cx="347" cy="73" rx="19" ry="9" transform="rotate(20 347 73)" 
+             fill="url(#ogreHole)"/>
+  </g>
+</svg>
