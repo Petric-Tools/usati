@@ -50,7 +50,9 @@
         "https://*.b92.net/*",
         "https://*.rts.rs/*",
         "https://*.vreme.com/*",
-        "https://*.nin.rs/*"
+        "https://*.nin.rs/*",
+        "https://*.glasbanjaluke.net/*",
+        "https://glasbanjaluke.net/*"
       ],
       "js": [
         "lib/pico.js",
