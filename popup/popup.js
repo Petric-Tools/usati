@@ -21,8 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     earScale: 1.35,
     earTwitch: true,
     filterKeywords: true,
-    allFaces: false
+    allFaces: false,
+    disabledSites: []
   };
+  const toggleSite = document.getElementById('toggleSite');
+  const sajtRed = document.getElementById('sajtRed');
+  const sajtNaziv = document.getElementById('sajtNaziv');
+  let host = null;
 
   // Load from chrome.storage
   if (typeof chrome !== 'undefined' && chrome.storage) {
@@ -46,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     earScale.value = currentSettings.earScale;
     toggleTwitch.checked = currentSettings.earTwitch;
     toggleFilter.checked = currentSettings.filterKeywords;
+    if (host) toggleSite.checked = !(currentSettings.disabledSites || []).includes(host);
 
     earButtons.forEach(btn => {
       btn.classList.toggle('active', btn.dataset.type === currentSettings.earType);
@@ -93,6 +99,30 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleFilter.addEventListener('change', (e) => {
     currentSettings.filterKeywords = e.target.checked;
     currentSettings.allFaces = !e.target.checked;
+    saveSettings();
+  });
+
+  // Ukljuci ili iskljuci usi samo na sajtu koji je otvoren u aktivnoj kartici
+  sajtRed.style.display = 'none';
+  if (typeof chrome !== 'undefined' && chrome.tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, (kartice) => {
+      const k = kartice && kartice[0];
+      if (!k) return;
+      chrome.tabs.sendMessage(k.id, { type: 'usati-host' }, (odg) => {
+        if (chrome.runtime.lastError || !odg || !odg.host) return;
+        host = odg.host;
+        sajtNaziv.textContent = 'Na sajtu ' + host.replace(/^www\./, '');
+        sajtRed.style.display = '';
+        updateUI();
+      });
+    });
+  }
+
+  toggleSite.addEventListener('change', (e) => {
+    if (!host) return;
+    const lista = (currentSettings.disabledSites || []).filter(h => h !== host);
+    if (!e.target.checked) lista.push(host);
+    currentSettings.disabledSites = lista;
     saveSettings();
   });
 

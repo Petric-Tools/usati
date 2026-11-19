@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/Manifest-V3-blue?style=flat-square" alt="Manifest V3">
   <img src="https://img.shields.io/badge/Browsers-Chrome%20%7C%20Brave%20%7C%20Edge%20%7C%20Opera-success?style=flat-square" alt="Browsers">
   <img src="https://img.shields.io/badge/License-MIT-orange?style=flat-square" alt="MIT License">
-  <img src="https://img.shields.io/badge/Local%20Model-pico.js%20(235%20KB)-purple?style=flat-square" alt="Offline & Fast">
+  <img src="https://img.shields.io/badge/Local%20Model-face--api.js%20(offline)-purple?style=flat-square" alt="Offline & Fast">
 </p>
 
 ---
@@ -35,7 +35,7 @@
 
 #### 1. YouTube уживо и видео преноси (Праћење лица у реалном времену)
 - Када гледате преносе седница, конференције или било који видео на YouTube-у, проширење поставља провидно платно (`<canvas>`) преко видео плејера.
-- Користи ултрабрзи локални каскадни детектор лица (`pico.js`, каскада од 235 KB) који прати положај главе директно у прегледачу.
+- Користи локални модел за препознавање лица (`face-api.js`) који у прегледачу препознаје Вучића, па уши добија само он, а не сви у кадру. У подешавањима се може укључити и режим „сва лица“.
 - На врх главе поставља уши које динамички прате величину лица, нагиб главе и кретање по екрану, уз благо комично мрцкање/мрдање!
 - Ради локално, без слања података на интернет и са минималном потрошњом процесора (детекција се ради на смањеном фрејму, а приказ тече у 60 FPS).
 
@@ -70,7 +70,7 @@
 
 #### 1. YouTube uživo i video prenosi (Praćenje lica u realnom vremenu)
 - Tokom prenosa sjednica Skupštine ili bilo kog YouTube videa, proširenje preko plejera postavlja providno platno (`<canvas>`).
-- Koristi brzi lokalni detektor lica (`pico.js`) koji prati glavu u realnom vremenu bez opterećenja računara.
+- Koristi lokalni model za prepoznavanje lica (`face-api.js`) koji u pregledaču prepoznaje Vučića, pa uši dobija samo on, a ne svi u kadru. U podešavanjima se može uključiti i režim „sva lica“.
 - Montira odabrane uši koje prate pokrete, nagib i zumiranje glave, uz animaciju mrckanja.
 
 #### 2. Skeniranje novinskih portala
@@ -98,7 +98,7 @@
 **Ušati** is a lightweight, satirical browser extension that tracks faces in real-time and overlays funny cartoon ears (donkey, bunny, ogre/ogre, devil horns, dog ears) on YouTube streams and news portals.
 
 ### 🌟 Features
-- **Real-Time YouTube Tracking:** Uses an offline, lightweight cascade face detector (`pico.js`, 235 KB) running locally on CPU/WebGL. No video feeds or frames leave your machine.
+- **Real-Time YouTube Tracking:** Uses offline face detection and recognition (`face-api.js`, MIT) running locally on WebGL/CPU, so only the selected politician gets ears unless "all faces" mode is on. No video feeds or frames leave your machine.
 - **Smart News Portal Scanner:** Scans news articles and image captions; when target political figures are identified, it automatically overlays ears onto the photos.
 - **Customizable Styles:** Choose from 5 different SVG ear styles with adjustable scaling (0.8x to 2.2x) and optional ear-twitch animations.
 - **100% Client-Side:** Zero analytics, zero data collection, privacy-respecting and fully offline-capable.
