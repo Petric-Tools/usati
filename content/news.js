@@ -83,7 +83,9 @@
     }
     const w = ulaz.naturalWidth, h = ulaz.naturalHeight;
     const velicina = Math.max(w, h) > 900 ? 608 : 416;
-    const nadjena = await Usati.lica(ulaz, velicina, !cfg.allFaces);
+    let nadjena = await Usati.lica(ulaz, velicina, !cfg.allFaces);
+    // na malim slicicama (150 px) detektor zna da ne vidi lice; identitet i dalje cuva prag prepoznavanja
+    if (nadjena.length === 0 && Math.max(w, h) <= 400) nadjena = await Usati.lica(ulaz, 608, !cfg.allFaces, 0.3);
     const zaUsi = cfg.allFaces ? nadjena : nadjena.filter(l => l.vucic);
     Usati.dbg('slika', src.slice(0, 90), ulaz === img ? 'direktno' : 'preko pozadine', nadjena.map(l => l.dist === null ? 'lice' : l.dist.toFixed(2)).join(' '));
     if ((img.currentSrc || img.src) !== src) return;
@@ -124,14 +126,22 @@
       const s = fit === 'cover' ? Math.max(sx, sy) : Math.min(sx, sy);
       ox = (r.width - p.w * s) / 2; oy = (r.height - p.h * s) / 2; sx = sy = s;
     }
-    const poze = p.poze.map(q => ({ x: q.x * sx + ox, y: q.y * sy + oy, ugao: q.ugao, sirina: q.sirina * sx }));
-    const gore = Math.ceil(Math.max(0, ...poze.map(q => Usati.visinaUsiju(q, cfg.earScale) - q.y)) + 4);
+    const kont = img.offsetParent || document.body;
+    // koliko mjesta iznad slike stvarno ima prije nego sto ga kontejner sa overflow odsijece
+    const mjesta = Math.max(0, r.top - granicaOdsijecanja(kont));
+    const poze = p.poze.map(q => {
+      const n = { x: q.x * sx + ox, y: q.y * sy + oy, ugao: q.ugao, sirina: q.sirina * sx };
+      const h = Usati.visinaUsiju(n, cfg.earScale);
+      const vrh = n.y - h * 0.82;
+      if (vrh < 2 - mjesta) n.y += Math.min(2 - mjesta - vrh, h * 0.6);
+      return n;
+    });
+    const gore = Math.min(Math.ceil(mjesta), Math.ceil(Math.max(0, ...poze.map(q => Usati.visinaUsiju(q, cfg.earScale) - q.y)) + 4));
     const kljuc = [r.left, r.top, r.width, r.height, window.scrollX, window.scrollY, gore, cfg.earType, cfg.earScale, Usati.usiSpremne()].join(',');
     if (kljuc === p.kljuc) return;
     p.kljuc = kljuc;
     const c = p.canvas;
     // kanvas ide u isti kontejner kao slika, da ga omotaci sa z-indexom ne prekriju
-    const kont = img.offsetParent || document.body;
     if (c.parentElement !== kont) kont.appendChild(c);
     let baseX = window.scrollX, baseY = window.scrollY;
     if (kont !== document.body && kont !== document.documentElement) {
@@ -154,6 +164,16 @@
     ctx.beginPath(); ctx.rect(0, 0, r.width, r.height + gore); ctx.clip();
     poze.forEach(q => Usati.nacrtaj(ctx, { x: q.x, y: q.y + gore, ugao: q.ugao, sirina: q.sirina }, cfg.earScale, false));
     try { if (localStorage.getItem('usatiDebug')) { Usati.dbg('crtam', poze.length, 'usi spremne', Usati.usiSpremne(), JSON.stringify(poze.map(q => [Math.round(q.x), Math.round(q.y), Math.round(q.sirina)]))); } } catch (e) { /* prazno */ }
+  }
+
+  // Gornja ivica najnizeg pretka (od kontejnera navise) koji odsijeca sadrzaj; kanvas je dijete kontejnera.
+  function granicaOdsijecanja(kont) {
+    let g = -Infinity;
+    for (let e = kont; e && e !== document.body && e !== document.documentElement; e = e.parentElement) {
+      const s = getComputedStyle(e);
+      if (s.overflowY !== 'visible' || s.overflowX !== 'visible') g = Math.max(g, e.getBoundingClientRect().top);
+    }
+    return g;
   }
 
   function crtajSve() { prekrivaci.forEach((_, img) => crtaj(img)); }

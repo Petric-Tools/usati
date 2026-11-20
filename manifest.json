@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Ušati (Nelečeni Ears Edition)",
   "short_name": "Ušati",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Prepoznaje Vučića u YouTube prenosima i na novinskim portalima i crta mu magareće, zečije ili ogarske uši. Sve radi lokalno.",
   "icons": {
     "16": "assets/icon16.png",
@@ -96,5 +96,29 @@
   "author": "Petrić Tools",
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "host_permissions": [
+    "https://*.nova.rs/*",
+    "https://*.n1info.rs/*",
+    "https://*.n1info.ba/*",
+    "https://*.blic.rs/*",
+    "https://*.ocdn.eu/*",
+    "https://*.kurir.rs/*",
+    "https://*.midas-network.com/*",
+    "https://*.adriamedia.tv/*",
+    "https://*.informer.rs/*",
+    "https://*.danas.rs/*",
+    "https://*.politika.rs/*",
+    "https://*.telegraf.rs/*",
+    "https://*.tf.rs/*",
+    "https://*.mondo.rs/*",
+    "https://*.alo.rs/*",
+    "https://*.b92.net/*",
+    "https://*.b92s.net/*",
+    "https://*.rts.rs/*",
+    "https://*.vreme.com/*",
+    "https://*.nin.rs/*",
+    "https://*.glasbanjaluke.net/*",
+    "https://glasbanjaluke.net/*"
+  ]
 }
