@@ -225,4 +225,8 @@
   window.addEventListener('resize', crtajSve);
   window.addEventListener('scroll', skenirajKasnije, { passive: true });
   setInterval(crtajSve, 1000);
+  // Karusel zna da otkrije skriveni slajd promjenom klase, bez promjene adrese slike i bez skrola, pa ga ni
+  // posmatrac ni skrol ne vide (Alo). Zato se povremeno i poslije svakog prelaza traze slike tek usle u kadar.
+  ['transitionend', 'animationend'].forEach(t => document.addEventListener(t, skenirajKasnije, true));
+  setInterval(skeniraj, 3000);
 })();

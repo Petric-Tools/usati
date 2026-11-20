@@ -77,16 +77,26 @@
           const dd = Math.hypot(s.poza.x - n.poza.x, s.poza.y - n.poza.y);
           if (dd < d && dd < n.poza.sirina) { d = dd; najbolji = s; }
         });
-        if (!najbolji) return { poza: n.poza, vucic: n.vucic, vidjen: sada };
+        if (!najbolji) return { poza: n.poza, vucic: n.vucic, vidjen: sada, vx: 0, vy: 0 };
         stari.splice(stari.indexOf(najbolji), 1);
         const a = 0.5;
+        const poza = {
+          x: najbolji.poza.x * (1 - a) + n.poza.x * a,
+          y: najbolji.poza.y * (1 - a) + n.poza.y * a,
+          ugao: najbolji.poza.ugao * (1 - a) + n.poza.ugao * a,
+          sirina: najbolji.poza.sirina * (1 - a) + n.poza.sirina * a
+        };
+        // brzina glave (px kadra u ms), izgladjena: izmedju dvije detekcije usi idu za glavom umjesto da cekaju
+        // Brzina vazi samo za bliske detekcije i mali pomak: rez kadra ili spor racunar (2 s po kadru)
+        // bi inace dali lazno brzo kretanje, pa bi usi odletjele u stranu. Tada je brzina nula, kao prije.
+        const dt = Math.max(1, sada - najbolji.vidjen);
+        const skok = Math.hypot(n.poza.x - najbolji.poza.x, n.poza.y - najbolji.poza.y);
+        const pouzdano = dt <= 800 && skok <= n.poza.sirina * 0.4;
+        const b = 0.5;
+        const vx = pouzdano ? (najbolji.vx || 0) * (1 - b) + ((n.poza.x - najbolji.poza.x) / dt) * b : 0;
+        const vy = pouzdano ? (najbolji.vy || 0) * (1 - b) + ((n.poza.y - najbolji.poza.y) / dt) * b : 0;
         return {
-          poza: {
-            x: najbolji.poza.x * (1 - a) + n.poza.x * a,
-            y: najbolji.poza.y * (1 - a) + n.poza.y * a,
-            ugao: najbolji.poza.ugao * (1 - a) + n.poza.ugao * a,
-            sirina: najbolji.poza.sirina * (1 - a) + n.poza.sirina * a
-          },
+          poza, vx, vy,
           vucic: saId ? najbolji.vucic * 0.6 + n.vucic * 0.4 : najbolji.vucic,
           vidjen: sada
         };
@@ -111,7 +121,11 @@
           tragovi.forEach(t => {
             if (sada - t.vidjen > Math.max(900, trajanje * 2.5)) return;
             if (!cfg.allFaces && t.vucic < 0.5) return;
-            const p = { x: m.ox + t.poza.x * m.s, y: m.oy + t.poza.y * m.s, ugao: t.poza.ugao, sirina: t.poza.sirina * m.s };
+            // predvidjanje: najvise 0,6 s i najvise pola sirine lica, da usi ne odlete kad se kadar promijeni
+            const proslo = Math.min(sada - t.vidjen, 600), gr = t.poza.sirina * 0.5;
+            const px = Math.max(-gr, Math.min(gr, (t.vx || 0) * proslo));
+            const py = Math.max(-gr, Math.min(gr, (t.vy || 0) * proslo));
+            const p = { x: m.ox + (t.poza.x + px) * m.s, y: m.oy + (t.poza.y + py) * m.s, ugao: t.poza.ugao, sirina: t.poza.sirina * m.s };
             // glava uz gornju ivicu kadra: spusti usi da ostanu na glavi umjesto van slike
             const h = Usati.visinaUsiju(p, cfg.earScale);
             const vrh = p.y - h * 0.82;
